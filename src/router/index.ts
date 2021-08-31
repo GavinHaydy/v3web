@@ -3,7 +3,7 @@
  * @CreatedBy:WebStorm
  * @Author: the-ruffian
  * @Date: 2021-08-30 21:55
- * @LastEditTime: 2021-8-30 23:02:04
+ * @LastEditTime: 2021-8-31 18:07:57
  * @LastEditors: the-ruffian
 */
 
@@ -25,7 +25,7 @@ export default createRouter({
     routes: [
         {
             path: '/',
-            component: () => import('../components/HelloWorld.vue')
+            component: () => import('../pages/login/login.vue')
         }
     ]
 })
