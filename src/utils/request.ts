@@ -3,13 +3,12 @@
  * @CreatedBy:WebStorm
  * @Author: the-ruffian
  * @Date: 2021-08-30 21:20
- * @LastEditTime: 2021-8-30 23:04:46
+ * @LastEditTime: 2021-8-31 18:06:08
  * @LastEditors: the-ruffian
 */
 import axios from "axios";
 
 const service = axios.create({
-    baseURL: 'http://106.13.171.218',
     timeout: 5000
 })
 service.interceptors.request.use(
