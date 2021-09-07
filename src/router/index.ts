@@ -3,7 +3,7 @@
  * @CreatedBy:WebStorm
  * @Author: the-ruffian
  * @Date: 2021-08-30 21:55
- * @LastEditTime: 2021-8-31 18:07:57
+ * @LastEditTime: 2021-9-7 20:09:15
  * @LastEditors: the-ruffian
 */
 
@@ -26,6 +26,10 @@ export default createRouter({
         {
             path: '/',
             component: () => import('../pages/login/login.vue')
+        },
+        {
+            path: '/register',
+            component: () => import('../pages/login/register.vue')
         }
     ]
 })
