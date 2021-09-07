@@ -45,7 +45,7 @@
           <a-row>
             <a-button
                 size="small"
-                type="success"
+                type="link"
                 @click="Register"
             >
               注册
