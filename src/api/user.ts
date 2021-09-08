@@ -50,7 +50,7 @@ export const getMenu = (data = {}) => {
         data
     })
 }
-export const getCode = (data = {}) => {
+export const getEmailCode = (data = {}) => {
     return request({
         url: '/api/getCode',
         method: Method.POST,
