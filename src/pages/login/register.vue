@@ -3,105 +3,110 @@
  * @CreatedBy:WebStorm
  * @Author: the-ruffian
  * @Date: 2021-09-07 16:24
- * @LastEditTime: 2021-9-7 21:25:25
+ * @LastEditTime: 2021-9-9 17:43:11
  * @LastEditors: the-ruffian
 -->
 <template>
   <div
-      class="register_fa"
+      style="padding-top: 20vh"
   >
-    <a-form
-        class="register_form"
-        :model='ruleForm'
-        :rules="rules"
-        layout="vertical"
+    <a-card
+        class="card-box"
     >
-      <a-row>
-        <a-form-item
-            label="电话"
-            name="phone"
-        >
-          <a-input
-              v-model:value="ruleForm.phone"
-              :maxlength='11'
-          ></a-input>
-        </a-form-item>
-      </a-row>
-      <a-row>
-        <a-form-item
-            label="昵称"
-            name="user"
-        >
-          <a-input
-              v-model:value="ruleForm.user"
-              :maxlength='20'
-          ></a-input>
-        </a-form-item>
-      </a-row>
-      <a-row>
-        <a-form-item
-            label="密码"
-            name="password"
-            style="width: 25%"
-        >
-          <a-input-password
-              v-model:value="ruleForm.password"
-              show-password
-              :maxlength='20'
-          ></a-input-password>
-        </a-form-item>
-      </a-row>
-      <a-row>
-        <a-form-item
-            label="确认密码"
-            name="rePass"
-        >
-          <a-input
-              v-model:value="ruleForm.rePass"
-              show-password
-              :maxlength='20'
-          ></a-input>
-        </a-form-item>
-      </a-row>
-      <a-row>
-        <a-form-item
-            label="邮箱"
-            name="email"
-        >
-          <a-input
-              v-model:value="ruleForm.email"
-              type="email"
-              :maxlength='30'
-          ></a-input>
-        </a-form-item>
-      </a-row>
-      <a-row>
-        <a-form-item
-            label="性别"
-            name="gender"
-            style="width: 25%"
-        >
-          <a-select
-              placeholder="请选择"
-              allowClear
-              v-model:value="ruleForm.genderI"
-              :options="ruleForm.gender"
+      <a-form
+          :model='ruleForm'
+          :rules="rules"
+          layout="vertical"
+      >
+        <a-row>
+          <a-form-item
+              class="input"
+              label="电话"
+              name="phone"
           >
-          </a-select>
-        </a-form-item>
-      </a-row>
-      <a-row>
-        <a-button
-            type="primary"
-            @click="handleClick"
-        >注册</a-button>
-        <a-button
-            danger
-            type="primary"
-            @click="handleBack"
-        >返回登录页</a-button>
-      </a-row>
-    </a-form>
+            <a-input
+                v-model:value="ruleForm.phone"
+                :maxlength='11'
+            ></a-input>
+          </a-form-item>
+        </a-row>
+        <a-row>
+          <a-form-item
+              class="input"
+              label="昵称"
+              name="user"
+          >
+            <a-input
+                v-model:value="ruleForm.user"
+                :maxlength='20'
+            ></a-input>
+          </a-form-item>
+        </a-row>
+        <a-row>
+          <a-form-item
+              class="input"
+              label="密码"
+              name="password"
+          >
+            <a-input-password
+                v-model:value="ruleForm.password"
+                :maxlength='20'
+            ></a-input-password>
+          </a-form-item>
+        </a-row>
+        <a-row>
+          <a-form-item
+              class="input"
+              label="确认密码"
+              name="rePass"
+          >
+            <a-input-password
+                v-model:value="ruleForm.rePass"
+                :maxlength='20'
+            ></a-input-password>
+          </a-form-item>
+        </a-row>
+        <a-row>
+          <a-form-item
+              class="input"
+              label="邮箱"
+              name="email"
+          >
+            <a-input
+                v-model:value="ruleForm.email"
+                type="email"
+                :maxlength='30'
+            ></a-input>
+          </a-form-item>
+        </a-row>
+        <a-row>
+          <a-form-item
+              class="input"
+              label="性别"
+              name="gender"
+          >
+            <a-select
+                placeholder="请选择"
+                allowClear
+                v-model:value="ruleForm.genderI"
+                :options="ruleForm.gender"
+            >
+            </a-select>
+          </a-form-item>
+        </a-row>
+        <a-row>
+          <a-button
+              type="primary"
+              @click="handleClick"
+          >注册</a-button>
+          <a-button
+              danger
+              type="primary"
+              @click="handleBack"
+          >返回登录页</a-button>
+        </a-row>
+      </a-form>
+    </a-card>
   </div>
 </template>
 
@@ -206,5 +211,9 @@ export default defineComponent({
 </script>
 
 <style scoped>
-
+.card-box{
+  background-color: #f9a7a7;
+  width: 20%;
+  margin-left: 32%;
+}
 </style>
