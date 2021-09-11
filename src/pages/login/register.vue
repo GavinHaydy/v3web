@@ -3,7 +3,7 @@
  * @CreatedBy:WebStorm
  * @Author: the-ruffian
  * @Date: 2021-09-07 16:24
- * @LastEditTime: 2021-9-9 17:43:11
+ * @LastEditTime: 2021-09-11 13:57:56
  * @LastEditors: the-ruffian
 -->
 <template>
@@ -213,7 +213,7 @@ export default defineComponent({
 <style scoped>
 .card-box{
   background-color: #f9a7a7;
-  width: 20%;
+  width: 36%;
   margin-left: 32%;
 }
 </style>
