@@ -65,18 +65,18 @@
   </div>
 </template>
 
-<script lang="ts">
-import {defineComponent, getCurrentInstance, reactive} from "vue";
+<script setup lang="ts">
+import {getCurrentInstance, reactive} from "vue";
 import {Md5} from "ts-md5";
 import { userLogin } from "../../api/user";
 import {message} from "ant-design-vue";
 import { RuleObject } from "ant-design-vue/lib/form/interface";
 
-
-export default defineComponent({
-  name: 'login',
-  setup() {
-      const internalInstance  = getCurrentInstance()
+    onMounted: {
+      localStorage.clear()
+      sessionStorage.clear()
+    }
+    const internalInstance  = getCurrentInstance()
     const form = reactive({
       phone: '',
       password: ''
@@ -84,11 +84,15 @@ export default defineComponent({
     const checkPhone = (rule :RuleObject, value :number) => {
      if(!internalInstance?.appContext.config.globalProperties.$checkPhone.test(value)){
        return Promise.reject('请输入正确的手机号')
+     }else {
+       return Promise.resolve()
      }
     }
     const checkPassword = (rule :RuleObject, value :string) =>{
         if (!internalInstance?.appContext.config.globalProperties.$checkPassword.test(value)){
           return Promise.reject('密码8-20位，支持英文、数字')
+        } else {
+          return Promise.resolve()
         }
     }
     const login = () =>{
@@ -126,16 +130,6 @@ export default defineComponent({
     const ForgerPassword = () =>{
       location.replace('/forgetPassword')
     }
-    return{
-      form,
-      login,
-      Register,
-      ForgerPassword,
-      rules
-    }
-  }
-})
-
 </script>
 
 <style scoped>
