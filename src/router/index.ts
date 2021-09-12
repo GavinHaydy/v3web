@@ -15,6 +15,16 @@ export default createRouter({
     routes: [
         {
             path: '/',
+            component: () => import('../components/HelloWorld.vue'),
+            beforeEnter: (to, from, next) => {
+                localStorage.getItem('token')?next() : next({
+                    path: '/login'
+                })
+                next()
+            }
+        },
+        {
+            path: '/login',
             component: () => import('../pages/login/login.vue')
         },
         {
