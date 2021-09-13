@@ -3,7 +3,7 @@
  * @CreatedBy:WebStorm
  * @Author: the-ruffian
  * @Date: 2021-08-31 11:28
- * @LastEditTime: 2021-9-6 19:48:48
+ * @LastEditTime: 2021-09-13 20:54:17
  * @LastEditors: the-ruffian
 -->
 <template>
@@ -36,7 +36,9 @@
               <a-input
                   placeholder="请输入密码"
                   type="password"
-                  v-model:value="form.password"/>
+                  v-model:value="form.password"
+                  @keyup.enter="login"
+              />
             </a-form-item>
           </a-row>
           <a-row justify="center" style="padding-right: 60px">
@@ -109,7 +111,7 @@ import { RuleObject } from "ant-design-vue/lib/form/interface";
                 localStorage.setItem('phone', form.phone)
                 localStorage.setItem('username', res.data.result.username)
                 localStorage.setItem('is_login', 'true')
-                location.replace('/default')
+                location.replace('/')
               } else {
                 message.error(res.data.message)
                 setTimeout(function () { location.reload() }, 1500) // 一秒后刷新页面
