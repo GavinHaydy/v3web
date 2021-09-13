@@ -3,7 +3,7 @@
  * @CreatedBy:WebStorm
  * @Author: the-ruffian
  * @Date: 2021-08-30 21:55
- * @LastEditTime: 2021-9-8 17:28:41
+ * @LastEditTime: 2021-09-13 21:20:16
  * @LastEditors: the-ruffian
 */
 
@@ -34,6 +34,10 @@ export default createRouter({
         {
             path: '/forgetPassword',
             component: () => import('../pages/login/forgetPassword.vue')
+        },
+        {
+            path: '/:pathMatch(.*)*',
+            component: () => import('../pages/publicPages/error.vue')
         }
     ]
 })
