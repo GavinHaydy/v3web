@@ -3,7 +3,7 @@
  * @CreatedBy:WebStorm
  * @Author: the-ruffian
  * @Date: 2021-09-07 16:24
- * @LastEditTime: 2021-09-11 13:57:56
+ * @LastEditTime: 2021-09-14 19:48:54
  * @LastEditors: the-ruffian
 -->
 <template>
@@ -110,30 +110,33 @@
   </div>
 </template>
 
-<script lang="ts">
-import {defineComponent, getCurrentInstance, reactive} from "vue";
+<script setup lang="ts">
+import {getCurrentInstance, reactive} from "vue";
   import {RuleObject} from "ant-design-vue/es/form/interface";
   import {userRegister} from "../../api/user";
   import {message} from "ant-design-vue";
   import {Md5} from "ts-md5";
 
-export default defineComponent({
-  name: 'register',
-  setup() {
     const internalInstance = getCurrentInstance()?.appContext.config.globalProperties
     const checkPhone = (rule: RuleObject, value: number) => {
       if (!internalInstance?.$checkPhone.test(value)) {
         return Promise.reject(('请填写正确的手机号'))
+      }else {
+        return Promise.resolve()
       }
     }
     const checkPassword = (rule: RuleObject, value: any) => {
       if (!internalInstance?.$checkPassword.test(value)) {
         return Promise.reject(('密码8-20位，支持英文、数字'))
+      }else {
+        return Promise.resolve()
       }
     }
     const checkEmail = (rule: RuleObject, value: any) => {
       if (!internalInstance?.$checkEmail.test(value)) {
         return Promise.reject(('请填写正确的邮箱'))
+      }else {
+        return Promise.resolve()
       }
     }
     const checkRepass = (rule: RuleObject, value: any) => {
@@ -141,6 +144,8 @@ export default defineComponent({
         return Promise.reject(('两次密码不一致，请重新输入'))
       } else if (!internalInstance?.$checkPassword.test(value)) {
         return Promise.reject(('密码8-20位，支持英文、数字'))
+      }else {
+        return Promise.resolve()
       }
     }
     const checkName = (rule: RuleObject, value: any) => {
@@ -148,6 +153,8 @@ export default defineComponent({
         return Promise.reject(('昵称不能为空'))
       } else if (internalInstance?.$checkNull.test(value)) {
         return Promise.reject(('昵称不支持空格'))
+      }else {
+        return Promise.resolve()
       }
     }
     const ruleForm = reactive({
@@ -200,14 +207,6 @@ export default defineComponent({
             })
       }
     }
-    return{
-      ruleForm,
-      rules,
-      handleBack,
-      handleClick
-    }
-  }
-})
 </script>
 
 <style scoped>
