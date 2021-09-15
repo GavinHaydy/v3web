@@ -7,7 +7,7 @@
  * @LastEditors: the-ruffian
 -->
 <template>
-  <div id="ErrorPage">
+  <div id="ErrorPage" style="height: 100vh">
     <iframe src="../../../public/404.html" style="width: 100%;height: 100vh">测试</iframe>
   </div>
 </template>
