@@ -73,10 +73,22 @@ import {Md5} from "ts-md5";
 import { userLogin } from "../../api/user";
 import {message} from "ant-design-vue";
 import { RuleObject } from "ant-design-vue/lib/form/interface";
+import {userIP} from "../../api/ip";
 
+const ta = reactive({
+  ip: '',
+  cityID: '',
+  cityName: ''
+})
     onMounted: {
       localStorage.clear()
       sessionStorage.clear()
+      userIP().then(res =>{
+        const obj = JSON.parse(res.data.replace(/var returnCitySN = /,'').replace(/;/,''))
+        ta.ip = obj.cip
+        ta.cityID = obj.cid
+        ta.cityName = obj.cname
+      })
     }
     const internalInstance  = getCurrentInstance()
     const form = reactive({
@@ -102,7 +114,10 @@ import { RuleObject } from "ant-design-vue/lib/form/interface";
       && internalInstance?.appContext.config.globalProperties.$checkPassword.test(form.password)){
         userLogin({
           phone: form.phone,
-          password: Md5.hashStr(form.password)
+          password: Md5.hashStr(form.password),
+          login_ip: ta.ip,
+          city_code: ta.cityID,
+          city_name: ta.cityName
         })
             .then(res =>{
               if (res.data.code === 200){
