@@ -10,9 +10,13 @@ export default defineConfig({
         target: 'http://106.13.171.218',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, '/api')
-      }
+      },
+      '/ip': {
+        target: 'http://pv.sohu.com',//这里是域名，不是完整地址
+        changeOrigin: true,//是否跨域
+        rewrite: (path => path.replace(/^\/ip/,'/'))
     },
     open: '/',
-    port: 3000
+    port: '3000'
   }
-})
+},})
