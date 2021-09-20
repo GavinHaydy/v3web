@@ -3,7 +3,7 @@
  * @CreatedBy:WebStorm
  * @Author: the-ruffian
  * @Date: 2021-08-30 21:55
- * @LastEditTime: 2021-09-13 21:20:16
+ * @LastEditTime: 2021-09-20 17:34:17
  * @LastEditors: the-ruffian
 */
 
@@ -15,7 +15,7 @@ export default createRouter({
     routes: [
         {
             path: '/',
-            component: () => import('../pages/publicPages/default.vue'),
+            component: () => import('../layouts/layout.vue'),
             beforeEnter: (to, from, next) => {
                 localStorage.getItem('token')?next() : next({
                     path: '/login'
