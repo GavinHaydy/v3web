@@ -11,6 +11,7 @@
     "vue": "^3.2.6"
   },
   "devDependencies": {
+    "@kangc/v-md-editor": "^2.3.12",
     "@vitejs/plugin-vue": "^1.6.0",
     "@vue/compiler-sfc": "^3.0.5",
     "ant-design-vue": "^2.2.6",

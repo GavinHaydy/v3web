@@ -7,9 +7,7 @@
  * @LastEditors: the-ruffian
 -->
 <template>
-  <div>
-    welcome
-  </div>
+  <v-md-editor></v-md-editor>
 </template>
 
 <script setup lang="ts">
