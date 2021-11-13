@@ -12,16 +12,14 @@ import '@kangc/v-md-editor/lib/theme/style/vuepress.css'
 import Prism from 'prismjs'
 
 //引入所有语言包
-import githubTheme from '@kangc/v-md-editor/lib/theme/github.js'
 import '@kangc/v-md-editor/lib/theme/style/github.css'
-import hljs from 'highlight.js'
 
 VueMarkdownEditor.use(vuepressTheme,{
     Prism,
+    extend(md:any){
+        // md为 markdown-it 实例，可以在此处进行修改配置,并使用 plugin 进行语法扩展
+    },
 });
-VueMarkdownEditor.use(githubTheme, {
-    Hljs: hljs,
-})
 createApp(App)
     .use(router)
     .use(Antd)
