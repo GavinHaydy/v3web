@@ -7,10 +7,13 @@
  * @LastEditors: the-ruffian
 -->
 <template>
-  <v-md-editor></v-md-editor>
+  <v-md-editor @save="save"></v-md-editor>
 </template>
 
 <script setup lang="ts">
+const save = () =>{
+  console.log(111)
+}
 </script>
 
 <style scoped>
