@@ -36,6 +36,10 @@ export default createRouter({
             component: () => import('../pages/login/forgetPassword.vue')
         },
         {
+            path: '/admin',
+            component: () => import('../pages/backstage/admin.vue')
+        },
+        {
             path: '/:pathMatch(.*)*',
             component: () => import('../pages/publicPages/error.vue')
         }
