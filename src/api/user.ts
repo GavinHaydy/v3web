@@ -64,3 +64,10 @@ export const forgetPassword = (data = {}) => {
         data
     })
 }
+export const logout = (data = {}) => {
+    return request({
+        url: '/api/logout',
+        method: Method.POST,
+        data
+    })
+}
