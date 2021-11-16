@@ -25,12 +25,13 @@
             @click="() => (collapsed = !collapsed)"
         />
         <menu-fold-outlined v-else class="trigger" @click="() => (collapsed = !collapsed)" />
-        <span class="right">退出</span>
+        <a class="right" @click="userLogout">退出登录</a>
+        <a class="right">{{menu.username}}</a>
       </a-layout-header>
       <a-layout-content
           :style="{ margin: '24px 16px', padding: '24px', background: '#fff', minHeight: '280px' }"
       >
-        Content
+        Content {{menu.menu}}
       </a-layout-content>
     </a-layout>
   </a-layout>
@@ -41,6 +42,10 @@ import {UserOutlined,
   VideoCameraOutlined,
   UploadOutlined,MenuFoldOutlined,MenuUnfoldOutlined} from "@ant-design/icons-vue";
 import {reactive, ref} from "vue";
+import {logout} from "../../api/user";
+import {message} from "ant-design-vue";
+import {getRoleMenu} from "../../api/roleAuth";
+import create from "@ant-design/icons-vue/es/components/IconFont";
 
 components:{
   MenuFoldOutlined
@@ -49,6 +54,34 @@ components:{
   VideoCameraOutlined
   UploadOutlined}
 const collapsed = ref<boolean>(false)
+const selectedKeys = ref<string[]>(['1'])
+const userLogout = (data = {}) => {
+  logout({
+    'phone': localStorage.getItem('phone')
+  }).then(res => {
+    if (res.data.code==200){
+      message.success(res.data.message)
+      setTimeout(function (){location.replace('/login')}, 2000)
+    }else {
+      message.error(res.data.message)
+      setTimeout(function (){location.replace('/login')}, 2000)
+    }
+  })
+}
+const menu = reactive({
+  menu: {},
+  username: localStorage.getItem('username')
+})
+const getMenu = (data = {}) => {
+  getRoleMenu({
+    'phone': localStorage.getItem('phone')
+  }).then(res =>{
+    if (res.data.code==200){
+      menu.menu = res.data.result
+    }
+  })
+}
+create(getMenu())
 </script>
 
 <style scoped>
