@@ -15,13 +15,7 @@ export default createRouter({
     routes: [
         {
             path: '/',
-            component: () => import('../pages/publicPages/default.vue'),
-            beforeEnter: (to, from, next) => {
-                localStorage.getItem('token')?next() : next({
-                    path: '/login'
-                })
-                next()
-            }
+            component: () => import('../pages/publicPages/editArticle.vue'),
         },
         {
             path: '/login',
@@ -37,7 +31,13 @@ export default createRouter({
         },
         {
             path: '/admin',
-            component: () => import('../pages/backstage/admin.vue')
+            component: () => import('../pages/backstage/admin.vue'),
+            beforeEnter: (to, from, next) => {
+                localStorage.getItem('token')?next() : next({
+                    path: '/'
+                })
+                next()
+            }
         },
         {
             path: '/:pathMatch(.*)*',
