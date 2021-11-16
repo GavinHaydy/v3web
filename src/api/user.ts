@@ -43,13 +43,6 @@ export const userFindAll = (data = {}) => {
         data
     })
 }
-export const getMenu = (data = {}) => {
-    return request({
-        url: '/api/auth/list',
-        method: Method.POST,
-        data
-    })
-}
 export const getEmailCode = (data = {}) => {
     return request({
         url: '/api/getCode',
