@@ -15,7 +15,7 @@ export default createRouter({
     routes: [
         {
             path: '/',
-            component: () => import('../pages/aritcle/editArticle.vue'),
+            component: () => import('../pages/home/default.vue'),
         },
         {
             path: '/login',
