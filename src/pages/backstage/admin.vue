@@ -80,6 +80,7 @@ const getMenu = (data = {}) => {
       menu.menu = res.data.result
     }
   })
+  return menu.menu
 }
 create(getMenu())
 </script>
