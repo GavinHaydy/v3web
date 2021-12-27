@@ -8,6 +8,7 @@ export default defineConfig({
     languages: 'all'
   })],
   server: {
+    open: '/',
     proxy: {
       '/api': {
         target: 'http://106.13.171.218',
@@ -19,7 +20,6 @@ export default defineConfig({
         changeOrigin: true,//是否跨域
         rewrite: (path => path.replace(/^\/ip/,'/'))
     },
-    open: '/',
     port: '3000'
   }
 },})
