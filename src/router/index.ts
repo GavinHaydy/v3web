@@ -30,6 +30,10 @@ export default createRouter({
             component: () => import('../pages/login/forgetPassword.vue')
         },
         {
+            path:'/article',
+            component: () => import('../pages/article/editArticle.vue')
+        },
+        {
             path: '/admin',
             component: () => import('../pages/backstage/admin.vue'),
             beforeEnter: (to, from, next) => {
