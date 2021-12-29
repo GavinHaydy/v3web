@@ -11,23 +11,69 @@
     <a-col :span="2">
       <h3 style="text-align: center">标题</h3>
     </a-col>
-    <a-col :span="12">
-      <a-input class="a-input"></a-input>
+    <a-col :span="8">
+      <a-input class="a-input" v-model:value="data.title"></a-input>
     </a-col>
+    <a-select
+        v-model:value="data.value"
+        mode="combobox"
+        style="width: 20%"
+        placeholder="Please select"
+        allowClear
+    >
+      <a-select-option
+          v-for="item in data.columns"
+          :value="item.id"
+          :lable="item.columnName"
+      >{{item.columnName}}</a-select-option>
+    </a-select>
     <a-button type="primary" @click="save">发布</a-button>
   </a-row>
-  <v-md-editor v-model="data.text" @save="save"></v-md-editor>
+  <v-md-editor v-model="data.article" @save="save"></v-md-editor>
 </template>
 
 <script setup lang="ts">
 import {reactive} from "vue";
+import {addArticle} from "../../api/article";
+import {message} from "ant-design-vue";
+import {searchColumn} from "../../api/column";
+import create from "@ant-design/icons-vue/es/components/IconFont";
 
 const data = reactive({
-  text: ''
+  title: '',
+  article: '',
+  author: localStorage.getItem('username'),
+  columns: '',
+  value: ''
 })
 const save = () =>{
-  console.log(typeof(data.text), data.text)
+  console.log(data.value)
+  addArticle({
+    'title': data.title,
+    'author': data.author,
+    'article': data.article,
+    'sortId': data.value
+  }).then(res =>{
+    if (res.data.code ===200){
+      message.success(res.data.message)
+    }else {
+      message.error(res.data.message)
+    }
+  })
 }
+const column = () => {
+  searchColumn({
+    'pageNo':1,
+    'columnName': ''
+  }).then(res =>{
+    if (res.data.code===200){
+      data.columns= res.data.result.list
+    }else {
+      message.error(res.data.message)
+    }
+  })
+}
+create(column())
 </script>
 
 <style scoped>
