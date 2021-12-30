@@ -14,11 +14,13 @@
     <a-col :span="8">
       <a-input class="a-input" v-model:value="data.title"></a-input>
     </a-col>
+    <h3
+      style="text-align: center"
+    >分类</h3>
     <a-select
         v-model:value="data.value"
-        mode="combobox"
         style="width: 20%"
-        placeholder="Please select"
+        placeholder="请选择分类"
         allowClear
     >
       <a-select-option
@@ -37,7 +39,6 @@ import {reactive} from "vue";
 import {addArticle} from "../../api/article";
 import {message} from "ant-design-vue";
 import {searchColumn} from "../../api/column";
-import create from "@ant-design/icons-vue/es/components/IconFont";
 
 const data = reactive({
   title: '',
@@ -73,12 +74,14 @@ const column = () => {
     }
   })
 }
-create(column())
+methods: {
+  column()
+}
 </script>
 
 <style scoped>
 .a-input {
-  border-width: 0px;
+  border-width: 0;
   border-bottom-width: 1px;
   border-bottom-color: coral;
 }
