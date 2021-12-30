@@ -14,3 +14,15 @@ export const addArticle = (data={})=>{
         data
     })
 }
+
+/**
+ *
+ * @param data: pageNo,pageSize, title, author, sortId
+ */
+export const searchArticle = (data ={}) => {
+  return request({
+      url: '/api/article/add',
+      method: Method.POST,
+      data
+  })
+}
