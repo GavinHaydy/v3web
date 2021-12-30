@@ -21,7 +21,7 @@ export const addArticle = (data={})=>{
  */
 export const searchArticle = (data ={}) => {
   return request({
-      url: '/api/article/add',
+      url: '/api/article/list',
       method: Method.POST,
       data
   })
