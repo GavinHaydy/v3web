@@ -34,6 +34,10 @@ export default createRouter({
             component: () => import('../pages/article/editArticle.vue')
         },
         {
+            path: '/details',
+            component: () => import('../pages/article/details.vue')
+        },
+        {
             path: '/admin',
             component: () => import('../pages/backstage/admin.vue'),
             beforeEnter: (to, from, next) => {
