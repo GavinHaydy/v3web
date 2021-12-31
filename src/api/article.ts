@@ -33,7 +33,7 @@ export const searchArticle = (data ={}) => {
  */
 export const articleBody = (data ={}) => {
   return request({
-      url: 'api/article/list',
+      url: 'api/article/body',
       method: Method.POST,
       data
   })
