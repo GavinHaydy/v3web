@@ -26,3 +26,15 @@ export const searchArticle = (data ={}) => {
       data
   })
 }
+
+/**
+ *
+ * @param data: id
+ */
+export const articleBody = (data ={}) => {
+  return request({
+      url: 'api/article/list',
+      method: Method.POST,
+      data
+  })
+}
