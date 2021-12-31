@@ -6,11 +6,10 @@
 
 <script setup lang="ts">
 import {reactive} from "vue";
-import {useRoute} from "vue-router";
+import {useRoute, useRouter} from "vue-router";
 import {articleBody} from "../../api/article";
-import {message} from "ant-design-vue";
 
-
+const router =useRouter()
 const listTable = reactive({
   list:''
 })
@@ -18,10 +17,10 @@ const getBody = () => {
   articleBody({
     'id': useRoute().query.id
   }).then(res =>{
-    if (res.data.code ===200){
+    if (res.data.result !== null){
       listTable.list = res.data.result
     }else {
-      message.error(res.data.message)
+      router.push('error')
     }
   })
 }
