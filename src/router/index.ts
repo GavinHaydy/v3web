@@ -3,7 +3,7 @@
  * @CreatedBy:WebStorm
  * @Author: the-ruffian
  * @Date: 2021-08-30 21:55
- * @LastEditTime: 2021-11-13 18:41:50
+ * @LastEditTime: 2022年03月05日18:46:10
  * @LastEditors: the-ruffian
 */
 
@@ -31,7 +31,13 @@ export default createRouter({
         },
         {
             path:'/article',
-            component: () => import('../pages/article/editArticle.vue')
+            component: () => import('../pages/article/editArticle.vue'),
+            beforeEnter: (to, from, next) => {
+                localStorage.getItem('token')?next() : next({
+                    path: '/login'
+                })
+                next()
+            }
         },
         {
             path: '/details',
