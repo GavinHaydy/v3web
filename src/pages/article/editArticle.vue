@@ -39,16 +39,17 @@ import {reactive} from "vue";
 import {addArticle} from "../../api/article";
 import {message} from "ant-design-vue";
 import {searchColumn} from "../../api/column";
+import defaultResult from "ant-design-vue/es/_util/isMobile";
+import any = defaultResult.any;
 
 const data = reactive({
   title: '',
   article: '',
   author: localStorage.getItem('username'),
-  columns: '',
+  columns: any,
   value: ''
 })
 const save = () =>{
-  console.log(data.value)
   addArticle({
     'title': data.title,
     'author': data.author,

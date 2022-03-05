@@ -16,6 +16,8 @@ import {reactive} from "vue";
 import {searchColumn} from "../../api/column";
 import {message} from "ant-design-vue";
 import {searchArticle} from "../../api/article";
+import defaultResult from "ant-design-vue/es/_util/isMobile";
+import any = defaultResult.any;
 
 const data = reactive({
   i: 20,
@@ -29,7 +31,7 @@ const listForm = reactive({
   sortId: '',
 })
 const listTable = reactive({
-  list: ''
+  list: any
 })
 const column = () => {
   searchColumn({
@@ -53,7 +55,6 @@ const articleList = () => {
   }).then(res => {
     if (res.data.code === 200){
       listTable.list = res.data.result.list
-      console.log(res.data.result.list)
     }
   })
 }

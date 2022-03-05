@@ -8,10 +8,12 @@
 import {reactive} from "vue";
 import {useRoute, useRouter} from "vue-router";
 import {articleBody} from "../../api/article";
+import defaultResult from "ant-design-vue/es/_util/isMobile";
+import any = defaultResult.any;
 
 const router =useRouter()
 const listTable = reactive({
-  list:''
+  list: any
 })
 const getBody = () => {
   articleBody({
