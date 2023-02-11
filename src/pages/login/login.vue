@@ -120,15 +120,16 @@ const ta = reactive({
           city_name: ta.cityName
         })
             .then(res =>{
-              if (res.data.code === 200){
-                const token = res.data.result.token
+              if (res.data.code === 1000){
+                console.log(res.data.data.result.token)
+                const token = res.data.data.result.token
                 localStorage.setItem('token',token)
                 localStorage.setItem('phone', form.phone)
-                localStorage.setItem('username', res.data.result.username)
+                localStorage.setItem('username', res.data.data.result.username)
                 localStorage.setItem('is_login', 'true')
-                location.replace('/')
+                location.replace('/admin')
               } else {
-                message.error(res.data.message)
+                message.error(res.data.data.msg)
                 setTimeout(function () { location.reload() }, 1500) // 一秒后刷新页面
               }
             })
