@@ -20,15 +20,13 @@ const getBody = () => {
     'id': useRoute().query.id
   }).then(res =>{
     if (res.data.result !== null){
-      listTable.list = res.data.result
+      listTable.list = res.data.data.result
     }else {
       router.push('error')
     }
   })
 }
-methods: {
-  getBody()
-}
+getBody();
 </script>
 
 <style scoped>
