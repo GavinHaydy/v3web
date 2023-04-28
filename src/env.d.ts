@@ -12,3 +12,4 @@ declare module 'prismjs'
 declare module '@kangc/v-md-editor/lib/theme/github.js'
 
 declare module '@kangc/v-md-editor/lib/preview'
+type EventHandlerNonNull = (...args: any[]) => void

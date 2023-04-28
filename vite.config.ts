@@ -1,12 +1,16 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import prismjsPlugin from "vite-plugin-prismjs";
+import {visualizer} from 'rollup-plugin-visualizer'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [vue(),
-  prismjsPlugin({
-    languages: 'all'
-  })],
+    prismjsPlugin({
+      languages: 'all'
+  }),
+      // 打包分析工具
+      visualizer()
+  ],
   server: {
     open: '/',
     host:'0.0.0.0',
