@@ -3,10 +3,10 @@
   <div style="height: 96vh;background-color: antiquewhite;overflow: scroll">
     <div
         style="height: 10%"
-        v-for="i in listTable.list"
-        :key="i"
+        v-for="item in listTable.list.slice(0,2)"
+        :key="item"
     >
-      <router-link :to="{path:'/details',query:{id:i.id}}" target='_blank'>{{ i.title }}</router-link>
+      <router-link :to="{path:'/details',query:{id:item.id}}" target='_blank' >{{ item.title }}</router-link>
     </div>
   </div>
 </template>
@@ -38,10 +38,10 @@ const column = () => {
     'pageNo':1,
     'columnName': ''
   }).then(res =>{
-    if (res.data.code===200){
-      data.columns= res.data.result.list
+    if (res.data.code===1000){
+      data.columns= res.data.data.result.list
     }else {
-      message.error(res.data.message)
+      message.error(res.data.data.msg)
     }
   })
 }
@@ -53,14 +53,13 @@ const articleList = () => {
     'author': listForm.author,
     'sortId': listForm.sortId
   }).then(res => {
-    if (res.data.code === 200){
-      listTable.list = res.data.result.list
+    if (res.data.code === 1000){
+      listTable.list = res.data.data.result.list
     }
   })
 }
-methods: {
-  column(),articleList()
-}
+column();
+articleList()
 </script>
 
 <style >
