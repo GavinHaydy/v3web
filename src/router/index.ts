@@ -3,7 +3,7 @@
  * @CreatedBy:WebStorm
  * @Author: the-ruffian
  * @Date: 2021-08-30 21:55
- * @LastEditTime: 2022年03月05日18:46:10
+ * @LastEditTime: 2023年04月28日13:06:34
  * @LastEditors: the-ruffian
 */
 
@@ -48,7 +48,7 @@ export default createRouter({
             component: () => import('../pages/backstage/admin.vue'),
             beforeEnter: (to, from, next) => {
                 localStorage.getItem('token')?next() : next({
-                    path: '/'
+                    path: '/login'
                 })
                 next()
             }
